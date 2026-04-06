@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+.container-caps {
+  font-family: 'Inter', sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+/* Sidebar de Filtros */
+.sidebar-filters {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.filter-group {
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Checkbox cuadrado idéntico a la imagen */
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.filter-item input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+.filter-item input[type="checkbox"]:checked {
+  background-color: #000;
+  border-color: #000;
+}
+
+.filter-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+}
+
+/* Grid de Productos */
+.products-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  transition: transform 0.3s ease;
+}
+
+.product-img-box {
+  background: #f7f7f7;
+  aspect-ratio: 1/1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.product-img-box img {
+  width: 90%;
+}
+
+.product-brand {
+  font-size: 11px;
+  font-weight: 800;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.product-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 5px 0;
+  height: 40px;
+  overflow: hidden;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 900;
+}
+/* ... (manten el resto de tu CSS igual, solo reemplaza o añade esto) */
+
+.products-grid {
+  flex-grow: 1;
+  display: grid;
+  /* Forzamos 3 columnas fijas en escritorio para mantener simetría */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 100%; /* Ocupa el ancho de su celda */
+}
+
+.product-img-box {
+  background: #f7f7f7;
+  /* TRUCO CLAVE: Crea un cuadrado perfecto sin importar la resolución */
+  aspect-ratio: 1 / 1; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 1px solid #f0f0f0;
+}
+
+.product-img-box img {
+  /* La imagen se ajusta al cuadrado sin deformarse */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  padding: 20px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  /* Forzamos a que el título siempre ocupe 2 líneas para no desalinear el precio */
+  height: 34px; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .container-caps {
+    flex-direction: column; /* Pone los filtros arriba de los productos */
+    padding: 20px;
+  }
+
+  .sidebar-filters {
+    width: 100%; /* El sidebar ocupa todo el ancho en móvil */
+    margin-bottom: 30px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 gorras por fila en móvil */
+    gap: 15px;
+  }
+  
+  .product-title {
+    font-size: 11px; /* Texto un poco más pequeño en móvil */
+    height: 32px;
+  }
+}
